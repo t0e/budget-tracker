@@ -4,7 +4,7 @@ from app.models.expense_model import expense_helper
 
 router = APIRouter()
 
-@router.get("/")
+@router.get("")
 async def get_expenses():
     expenses = []
     cursor = expense_collection.find().sort("date", -1)
