@@ -9,7 +9,7 @@ export default function ExpensesTable() {
     })
 
     if (isLoading) {
-        return <div className="text-white p-8">Loading...</div>
+        return <div className="text-black p-8">Loading...</div>
     }
 
     if (error) {

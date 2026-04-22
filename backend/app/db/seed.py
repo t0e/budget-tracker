@@ -2,7 +2,7 @@ import asyncio
 from datetime import datetime
 from motor.motor_asyncio import AsyncIOMotorClient
 
-MONGO_URL = "mongodb://localhost:27017"
+MONGO_URL = "mongodb://mongodb:27017"
 DATABASE_NAME = "budget_tracker"
 
 sample_data = [
