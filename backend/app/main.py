@@ -1,10 +1,9 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.routes import expense
+from app.routes import transaction
 
 app = FastAPI()
 
-# Allow frontend access
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -13,7 +12,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(expense.router, prefix="/expenses", tags=["Expenses"])
+app.include_router(transaction.router, prefix="/transactions", tags=["Transactions"])
 
 @app.get("/")
 async def root():

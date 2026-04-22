@@ -3,5 +3,3 @@ from app.core.config import settings
 
 client = AsyncIOMotorClient(settings.MONGO_URL)
 database = client[settings.DATABASE_NAME]
-
-expense_collection = database.get_collection("expenses")

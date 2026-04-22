@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query'
-import { getExpenses } from '../../services/expense.service'
-import { Expense } from '../../types/expense'
+import { getTransactions } from '../../services/transaction.service'
+import { Transaction } from '../../types/transaction'
 
 export default function ExpensesTable() {
     const { data, isLoading, error } = useQuery({
         queryKey: ['expenses'],
-        queryFn: getExpenses
+        queryFn: getTransactions
     })
 
     if (isLoading) {
@@ -38,7 +38,7 @@ export default function ExpensesTable() {
                         </thead>
 
                         <tbody className="divide-y divide-white/5">
-                            {data?.map((expense: Expense) => (
+                            {data?.map((expense: Transaction) => (
                                 <tr
                                     key={expense.id}
                                     className="hover:bg-white/5"
@@ -52,13 +52,13 @@ export default function ExpensesTable() {
                                         {expense.description}
                                     </td>
                                     <td className="px-6 py-4 text-sm text-gray-300">
-                                        {expense.category}
+                                        {expense.category.name}
                                     </td>
                                     <td className="px-6 py-4 text-sm text-gray-300">
                                         {expense.qty}
                                     </td>
                                     <td className="px-6 py-4 text-sm text-green-400 font-medium">
-                                        ${expense.total_amount.toFixed(2)}
+                                        ${expense.amount.toFixed(2)}
                                     </td>
                                 </tr>
                             ))}
