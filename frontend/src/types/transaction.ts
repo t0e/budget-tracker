@@ -10,8 +10,8 @@ export interface Transaction {
         icon: string
         color: string
     }
-    description?: string
     qty: number
+    total_amount: number
     note?: string
     date: string
     created_at: string

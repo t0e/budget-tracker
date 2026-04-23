@@ -16,6 +16,8 @@ export default function ExpensesTable() {
         return <div className="text-red-500 p-8">Error loading expenses</div>
     }
 
+    console.log(data)
+
     return (
         <div className="min-h-screen bg-[#0b1220] p-8">
             <div className="mx-auto max-w-6xl rounded-xl border border-white/10 bg-[#0f172a] shadow-lg">
@@ -30,35 +32,43 @@ export default function ExpensesTable() {
                         <thead>
                             <tr className="text-left text-sm font-semibold text-gray-300">
                                 <th className="px-6 py-4">Date</th>
-                                <th className="px-6 py-4">Description</th>
                                 <th className="px-6 py-4">Category</th>
+                                <th className="px-6 py-4">Amount</th>
                                 <th className="px-6 py-4">Qty</th>
                                 <th className="px-6 py-4">Total</th>
                             </tr>
                         </thead>
 
                         <tbody className="divide-y divide-white/5">
-                            {data?.map((expense: Transaction) => (
+                            {data?.map((transaction: Transaction) => (
                                 <tr
-                                    key={expense.id}
+                                    key={transaction.id}
                                     className="hover:bg-white/5"
                                 >
                                     <td className="px-6 py-4 text-sm text-gray-300">
                                         {new Date(
-                                            expense.date
+                                            transaction.date
                                         ).toLocaleDateString()}
                                     </td>
-                                    <td className="px-6 py-4 text-sm text-white">
-                                        {expense.description}
+                                    <td className="px-6 py-4 text-sm text-gray-300">
+                                        {transaction.category.icon}
+                                        {'  '}
+                                        {transaction.category.name}
                                     </td>
                                     <td className="px-6 py-4 text-sm text-gray-300">
-                                        {expense.category.name}
+                                        {transaction.amount.toFixed(2)}
                                     </td>
                                     <td className="px-6 py-4 text-sm text-gray-300">
-                                        {expense.qty}
+                                        {transaction.qty}
                                     </td>
-                                    <td className="px-6 py-4 text-sm text-green-400 font-medium">
-                                        ${expense.amount.toFixed(2)}
+                                    <td
+                                        className={`px-6 py-4 text-sm font-medium ${
+                                            transaction.type === 'expense'
+                                                ? 'text-red-400'
+                                                : 'text-green-400'
+                                        }`}
+                                    >
+                                        {transaction.total_amount.toFixed(2)}
                                     </td>
                                 </tr>
                             ))}
