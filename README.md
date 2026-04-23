@@ -79,9 +79,9 @@ docker-compose up --build
 
 ---
 
-## 📸 Screenshots (optional)
+## 📸 UI Preview
 
-_Add screenshots of your dashboard, charts, and transaction pages here._
+<img src="assets/dashboard.png" width="300" />
 
 ---
 
